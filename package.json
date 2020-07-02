@@ -1,0 +1,13 @@
+{
+  "name": "docker-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Shawn Stewart <shawn.stewart@quarkworks.co>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
