@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Shawn Stewart <shawn.stewart@quarkworks.co>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "koa": "^2.13.0"
   },
