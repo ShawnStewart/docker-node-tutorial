@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+    db:
+        image: 'postgres'
+        env_file:
+            - database.env
+        volumes:
+            - ./pgdata:/var/lib/postgresql/dataks
+        ports:
+            - '5432:5432'
+    api-web:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        image: 'docker-node-tutorial'
+        depends_on:
+            - db
+        ports:
+            - '3000:3000'
