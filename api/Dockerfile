@@ -9,4 +9,6 @@ RUN yarn install
 
 COPY . /app
 
+EXPOSE 3000
+
 CMD ["yarn", "server"]

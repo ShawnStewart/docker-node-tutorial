@@ -1,17 +1,19 @@
 {
-  "name": "docker-node",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Shawn Stewart <shawn.stewart@quarkworks.co>",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "server": "nodemon index.js"
-  },
-  "dependencies": {
-    "koa": "^2.13.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+    "name": "docker-node",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Shawn Stewart <s.stewart0220@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "server": "nodemon index.js"
+    },
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "knex": "^0.21.1",
+        "koa": "^2.13.0",
+        "pg": "^8.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
 }

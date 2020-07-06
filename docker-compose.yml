@@ -1,19 +1,30 @@
 version: '3.8'
 services:
     db:
-        image: 'postgres'
+        image: postgres
+        restart: always
         env_file:
             - database.env
         volumes:
-            - ./pgdata:/var/lib/postgresql/dataks
+            - ./pgdata:/var/lib/postgresql/data
         ports:
-            - '5432:5432'
+            - 15432:5432/tcp
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
     api-web:
         build:
             context: ./api
             dockerfile: Dockerfile
-        image: 'docker-node-tutorial'
+        image: api-web
+        restart: always
+        env_file:
+            - database.env
         depends_on:
             - db
         ports:
-            - '3000:3000'
+            - 3000:3000
+        volumes:
+            - ./api:/app

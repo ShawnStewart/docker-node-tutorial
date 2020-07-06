@@ -1,5 +1,8 @@
-import Koa from 'koa';
+const dotenv = require('dotenv');
+const Koa = require('koa');
+const db = require('./database/dbConfig');
 
+dotenv.config();
 const app = new Koa();
 
 // logger
@@ -22,7 +25,25 @@ app.use(async (ctx, next) => {
 // response
 
 app.use(async (ctx) => {
-    ctx.body = 'Hello test';
+    let tries = 5;
+    while (tries) {
+        try {
+            tries--;
+            console.log('testing connection');
+            const result = await db.raw('select 1+1 as result');
+            console.log('result', result);
+            ctx.body = result;
+        } catch (err) {
+            if (tries > 0) {
+                console.log(`failed - tries left ${tries}`);
+                console.log(`error: ${err.stack}`);
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+                continue;
+            }
+            console.log('error');
+            ctx.body = `caught an error ${err}`;
+        }
+    }
 });
 
 app.listen(3000);
