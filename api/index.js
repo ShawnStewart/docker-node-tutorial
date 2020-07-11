@@ -1,8 +1,8 @@
 const dotenv = require('dotenv');
 const Koa = require('koa');
-const db = require('./database/dbConfig');
 
-dotenv.config();
+dotenv.config({ path: '../database.env' });
+const db = require('./database/dbConfig');
 const app = new Koa();
 
 // logger
